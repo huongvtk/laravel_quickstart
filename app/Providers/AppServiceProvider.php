@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Task;
+
 use Illuminate\Support\ServiceProvider;
+
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       View::share('tasks', Task::orderBy('created_at', 'desc')->get());
     }
 
     /**
